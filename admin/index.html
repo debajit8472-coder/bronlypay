@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0a1731" />
+  <meta name="referrer" content="no-referrer" />
+  <title>BronlyPay · Admin Console</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <script src="./config.js" defer></script>
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <div id="loginScreen" class="login-screen">
+    <div class="login-deco"><div class="orbit one"></div><div class="orbit two"></div><div class="login-deco-content"><div class="brand-large"><span class="mark">B</span> BronlyPay<span class="accent-dot">.</span></div><h1>Operations,<br />in focus.</h1><p>Manage customers, track payment records, review requests and resolve issues from one secure workspace.</p><div class="login-chip">SECURE ADMIN CONSOLE · V1</div></div></div>
+    <div class="login-panel"><div class="login-form-wrap"><div class="small-eyebrow">AUTHORIZED STAFF ONLY</div><h2>Welcome back</h2><p class="muted">Sign in using an account assigned an admin role by the backend.</p><form id="loginForm" autocomplete="on"><label for="email">Email address</label><input id="email" type="email" autocomplete="username" placeholder="admin@example.com" required /><label for="password">Password</label><input id="password" type="password" autocomplete="current-password" placeholder="Your password" required /><button type="submit" class="btn primary full" id="loginButton">Secure sign in <span>→</span></button></form><p id="loginError" class="form-error" role="alert"></p><div class="login-footer"><span class="status-dot"></span> Database-backed access control &nbsp;·&nbsp; No demo accounts</div></div></div>
+  </div>
+  <div id="appShell" class="app-shell hidden">
+    <aside class="sidebar" id="sidebar"><div class="sidebar-top"><div class="brand"><span class="mark">B</span><span>BronlyPay<small>ADMIN CONSOLE</small></span></div><button id="mobileClose" class="mobile-close" aria-label="Close navigation">×</button></div>
+      <div class="nav-section-label">WORKSPACE</div>
+      <nav id="nav" aria-label="Admin navigation">
+        <button class="nav-item active" data-page="overview"><span class="nav-symbol">▦</span> Overview</button>
+        <button class="nav-item" data-page="users"><span class="nav-symbol">♙</span> Customers</button>
+        <button class="nav-item" data-page="payments"><span class="nav-symbol">▤</span> Payments</button>
+        <button class="nav-item" data-page="recharges"><span class="nav-symbol">◈</span> Recharges</button>
+        <button class="nav-item" data-page="ledger"><span class="nav-symbol">≋</span> Wallet ledger</button>
+        <button class="nav-item" data-page="requests"><span class="nav-symbol">☑</span> Payment requests</button>
+        <button class="nav-item" data-page="tickets"><span class="nav-symbol">☏</span> Support tickets</button>
+      </nav>
+      <div class="nav-section-label second">SYSTEM</div>
+      <nav aria-label="System navigation">
+        <button class="nav-item" data-page="audit"><span class="nav-symbol">◷</span> Activity log</button>
+        <button class="nav-item" data-page="settings"><span class="nav-symbol">⚙</span> System status</button>
+      </nav>
+      <div class="sidebar-bottom"><div class="safe-chip"><span>●</span> Financial actions restricted<small>Read-only balances · No auto-credit</small></div><button class="logout" id="logoutBtn">↪ &nbsp; Sign out</button></div>
+    </aside>
+    <div class="main-area"><header class="topbar"><div class="topbar-left"><button id="menuBtn" aria-label="Open menu" class="menu-btn">☰</button><div class="breadcrumb">Workspace <span>/</span> <strong id="breadcrumb">Overview</strong></div></div><div class="topbar-right"><span class="environment-label"><span class="status-dot"></span> LIVE DATA</span><button class="icon-btn" id="refreshBtn" title="Refresh current view" aria-label="Refresh current view">↻</button><div class="account" id="account"><span class="avatar" id="avatar">A</span><div><strong id="accountName">Admin</strong><small id="accountRole">Administrator</small></div></div></div></header>
+      <main id="mainContent" tabindex="-1"><div class="loading-box">Preparing dashboard…</div></main>
+      <footer class="footer"><span>© BronlyPay · Operations Console</span><span>v1.0 · Restricted access</span></footer>
+    </div>
+  </div>
+  <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+  <dialog id="actionDialog"><form id="dialogForm" method="dialog"><div class="dialog-header"><h3 id="dialogTitle">Action</h3><button type="button" id="dialogClose" class="icon-btn" aria-label="Close dialog">×</button></div><div id="dialogBody"></div><div class="dialog-actions"><button type="button" id="dialogCancel" class="btn ghost">Cancel</button><button type="submit" id="dialogConfirm" class="btn primary">Save</button></div></form></dialog>
+</body>
+</html>
